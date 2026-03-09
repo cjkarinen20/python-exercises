@@ -1,6 +1,4 @@
 def isValidChessBoard(chessboard):
-    
-    
     # Define Pieces and Colors
     pieces = ['king', 'queen', 'rook', 'knight', 'bishop', 'pawn']
     colors = ['b', 'w']
