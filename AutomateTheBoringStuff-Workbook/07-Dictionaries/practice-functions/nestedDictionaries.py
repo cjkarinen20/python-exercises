@@ -1,4 +1,3 @@
-
 # 30.
 studentList = [
     {'name': 'Alice', 'grade': 7},

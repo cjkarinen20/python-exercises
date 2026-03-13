@@ -1,23 +1,5 @@
 import sys, copy
 
-def print_chessboard(board):
-    squares = []
-    is_white_square = True
-    for y in '87654321':
-        for x in 'abcdefgh':
-            #print(x, y, is_white_square)
-            if x + y in board.keys():
-                squares.append(board[x + y])
-            else:
-                if is_white_square:
-                    squares.append(WHITE_SQUARE)
-                else:
-                    squares.append(BLACK_SQUARE)
-            is_white_space = not is_white_space
-        is_white_space = not is_white_space
-        
-    print(BOARD_TEMPLATE.format(*squares))
-    
 STARTING_PIECES = {'a8': 'bR', 'b8': 'bN', 'c8': 'bB', 'd8': 'bQ',
 'e8': 'bK', 'f8': 'bB', 'g8': 'bN', 'h8': 'bR', 'a7': 'bP', 'b7': 'bP',
 'c7': 'bP', 'd7': 'bP', 'e7': 'bP', 'f7': 'bP', 'g7': 'bP', 'h7': 'bP',
@@ -55,6 +37,25 @@ BOARD_TEMPLATE = """
 """
 WHITE_SQUARE = '||'
 BLACK_SQUARE = '  '
+
+def print_chessboard(board):
+    squares = []
+    is_white_square = True
+    for y in '87654321':
+        for x in 'abcdefgh':
+            #print(x, y, is_white_square) #DEBUG: Show Coordinates.
+            if x + y in board.keys():
+                squares.append(board[x + y])
+            else:
+                if is_white_square:
+                    squares.append(WHITE_SQUARE)
+                else:
+                    squares.append(BLACK_SQUARE)
+            is_white_square = not is_white_square
+        is_white_square = not is_white_square
+        
+    print(BOARD_TEMPLATE.format(*squares))
+    
 
 print('Pieces:')
 print('  w - White, b - Black')
