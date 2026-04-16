@@ -12,5 +12,10 @@ def is_strong_password(password):
     if not lower_regex.search(password) or not upper_regex.search(password):
         return False
     
-    # If all checks pass
+    # Rule 3: Has at least one digit.
+    digit_regex = re.compile(r'\d')
+    if not digit_regex.search(password):
+        return False
+    
+    # If all checks pass.
     return True
