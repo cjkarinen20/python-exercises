@@ -5,20 +5,25 @@
 
 import pyperclip, re
 
-http_re = re.compile(r'''(
-
+url_re = re.compile(r'''(
+    (https://|http://) # Protocol
+    ([a-zA-Z0-9.]+)? # Sub Domain
+    ([a-zA-Z0-9-]+) # Domain 
+    (\.[a-zA-Z]{3}) # Top Level Domain
+    ([a-zA-Z0-9-=?#&:_/]+)? # Path 
 )''', re.VERBOSE)
 
 # Find matches in clipboard text.
 text = str(pyperclip.paste())
 
-matches = []
-for groups in http_re.findall(text):
-    matches.append(groups[0])
+matches = [] # List of matches
+for groups in url_re.findall(text):
+    matches.append(groups[0]) # Returns the whole url
     
 if len(matches) > 0:
-    pyperclip.copy('\n'.join(matches))
+    pyperclip.copy('\n'.join(matches)) 
+    # Copies current match to clipboard
     print('Copied to clipboard:')
     print('\n'.join(matches))
 else:
-    print('No phone numbers or email addresses found.')
+    print('No valid URLs found.')
