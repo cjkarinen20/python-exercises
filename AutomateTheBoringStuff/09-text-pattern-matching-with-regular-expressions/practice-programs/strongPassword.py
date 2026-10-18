@@ -1,21 +1,18 @@
-import re
+import pyperclip, re
 
-def is_strong_password(password):
-    # Rule 1: Must be at least eight characters long.
+letter_case_re = re.compile(r'[a-zA-Z]+')
+
+digit_re = re.compile(r'\d+')
+
+password = str(pyperclip.paste())
+
+def password_checker(password):
     if len(password) < 8:
-        return False
-    
-    # Rule 2: Contains both uppercase and lowercase characters.
-    lower_regex = re.compile(r'[a-z]')
-    upper_regex = re.compile(r'[A-Z]')
-    
-    if not lower_regex.search(password) or not upper_regex.search(password):
-        return False
-    
-    # Rule 3: Has at least one digit.
-    digit_regex = re.compile(r'\d')
-    if not digit_regex.search(password):
-        return False
-    
-    # If all checks pass.
-    return True
+        return("A strong password must be at least 8 characters in length.")
+    if not re.search(letter_case_re, password):
+        return("A strong password must have both uppercase and lowercase letters.")
+    if not re.search(digit_re, password):
+        return("A strong password must have at least one digit.")
+    return("Password is strong!")
+message_result = password_checker(password)
+print(message_result)

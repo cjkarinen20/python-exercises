@@ -1,15 +1,15 @@
-import re
-def regex_strip(text, chars = None):
-    if chars is None:
-        # Matches leading/trailing whitespace
-        strip_regex = re.compile(r'^\s+|\s+$')
-    else:
-        # Escapes special character and matches them at start or end.
-        escaped_chars = re.escape(chars)
-        strip_regex = re.compile(rf'^[{escaped_chars}]+|[{escaped_chars}]+$')
-        
-    return strip_regex.sub('', text)
+import pyperclip, re
 
-if __name__ == "__main__":
-    print(f"'{regex_strip('  hello world  ')}'")      # Output: 'hello world'
-    print(regex_strip('SpamSpamBaconSpamEggsSpam', 'Spam')) # Output: 'BaconSpamEggs'
+text = str(pyperclip.paste())
+
+def regex_strip(text, chars=None):
+    if chars is None:
+        # match leading or trailing whitespace
+        pattern = r'^\s+|\s+$'
+    else:
+        escaped_chars = re.escape(chars)
+        pattern = f'^[{escaped_chars}]+|[{escaped_chars}]+$'
+    
+    return re.sub(pattern, '', text)
+
+print(f"'{regex_strip(text)}'")
