@@ -23,9 +23,9 @@ phone_re = re.compile(r'''(
 
 # Create email regex.
 email_re = re.compile(r'''(
-  ❶ [a-zA-Z0-9._%+-]+  # Username
-  ❷ @  # @ symbol
-  ❸ [a-zA-Z0-9.-]+  # Domain name
+    [a-zA-Z0-9._%+-]+  # Username
+    @  # @ symbol
+    [a-zA-Z0-9.-]+  # Domain name
     (\.[a-zA-Z]{2,4})  # Dot-something
     )''', re.VERBOSE)
 

@@ -9,7 +9,7 @@ url_re = re.compile(r'''(
     (https://|http://) # Protocol
     ([a-zA-Z0-9.]+)? # Sub Domain
     ([a-zA-Z0-9-]+) # Domain 
-    (\.[a-zA-Z]{3}) # Top Level Domain
+    (\.[a-zA-Z]{3}) # Top Level Domain (.com, .net, etc.)
     ([a-zA-Z0-9-=?#&:_/]+)? # Path 
 )''', re.VERBOSE)
 
